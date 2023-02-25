@@ -13,7 +13,6 @@ $options  = [                        // Options for how PDO works
     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
     PDO::ATTR_EMULATE_PREPARES   => false,
 ];                                                                  // Set PDO options
-
 // DO NOT CHANGE ANYTHING BENEATH THIS LINE
 $dsn = "$type:host=$server;dbname=$db;port=$port;charset=$charset"; // Create DSN
 try {                                                               // Try following code

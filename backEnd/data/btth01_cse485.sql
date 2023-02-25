@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th2 24, 2023 lúc 02:54 PM
+-- Thời gian đã tạo: Th2 24, 2023 lúc 05:45 PM
 -- Phiên bản máy phục vụ: 10.4.24-MariaDB
 -- Phiên bản PHP: 8.1.6
 
@@ -18,32 +18,32 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: 'btth01_cse485'
+-- Cơ sở dữ liệu: `btth01_cse485`
 --
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng 'baiviet'
+-- Cấu trúc bảng cho bảng `baiviet`
 --
 
-CREATE TABLE 'baiviet' (
-  'ma_bviet' int(11) NOT NULL,
-  'tieude' varchar(200) NOT NULL,
-  'ten_bhat' varchar(100) NOT NULL,
-  'ma_tloai' int(11) NOT NULL,
-  'tomtat' text NOT NULL,
-  'noidung' text DEFAULT NULL,
-  'ma_tgia' int(11) NOT NULL,
-  'ngayviet' datetime NOT NULL DEFAULT current_timestamp(),
-  'hinhanh' varchar(200) DEFAULT NULL
+CREATE TABLE `baiviet` (
+  `ma_bviet` int(11) NOT NULL,
+  `tieude` varchar(200) NOT NULL,
+  `ten_bhat` varchar(100) NOT NULL,
+  `ma_tloai` int(11) NOT NULL,
+  `tomtat` text NOT NULL,
+  `noidung` text DEFAULT NULL,
+  `ma_tgia` int(11) NOT NULL,
+  `ngayviet` datetime NOT NULL DEFAULT current_timestamp(),
+  `hinhanh` varchar(200) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng 'baiviet'
+-- Đang đổ dữ liệu cho bảng `baiviet`
 --
 
-INSERT INTO 'baiviet' ('ma_bviet', 'tieude', 'ten_bhat', 'ma_tloai', 'tomtat', 'noidung', 'ma_tgia', 'ngayviet', 'hinhanh') VALUES
+INSERT INTO `baiviet` (`ma_bviet`, `tieude`, `ten_bhat`, `ma_tloai`, `tomtat`, `noidung`, `ma_tgia`, `ngayviet`, `hinhanh`) VALUES
 (1, 'Lòng mẹ', 'Lòng mẹ', 2, 'Và mẹ ơi đừng khóc nhé! Cả đời này mẹ đã khóc nhiều lắm rồi, hãy cười lên vì con đã trưởng thành! Con sẽ lại về dậy sớm nấu cơm cho mẹ, nấu nước cho mẹ tắm như ngày xưa. “Dù cho vai nắng nhưng lòng thương chẳng nhạt màu, vẫn mơ quay về vui vầy dưới bóng mẹ yêu”', NULL, 1, '2012-07-23 00:00:00', NULL),
 (2, 'Cảm ơn em đã rời xa anh', 'Vết mưa', 2, 'Cảm ơn em đã cho anh những tháng ngày hạnh phúc, cho anh biết yêu và được yêu. Em cho anh được nếm trải hương vị ngọt ngào của tình yêu nhưng cũng đầy đau khổ và nước mắt. Những tháng ngày đó có lẽ suốt cuộc đời anh không bao giờ quên', NULL, 3, '2012-02-12 00:00:00', NULL),
 (3, 'Cuộc đời có mấy ngày mai?', 'Phôi pha', 2, 'Đêm nay, trời quang mây tạnh, trong người nghe hoang vắng và tôi ngồi đây “Ôm lòng đêm, Nhìn vầng trăng mới về” mà ngậm ngùi “Nhớ chân giang hồ. Ôi phù du, từng tuổi xuân đã già”', NULL, 4, '2014-03-13 00:00:00', NULL),
@@ -61,20 +61,20 @@ INSERT INTO 'baiviet' ('ma_bviet', 'tieude', 'ten_bhat', 'ma_tloai', 'tomtat', '
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng 'tacgia'
+-- Cấu trúc bảng cho bảng `tacgia`
 --
 
-CREATE TABLE 'tacgia' (
-  'ma_tgia' int(11) NOT NULL,
-  'ten_tgia' varchar(100) NOT NULL,
-  'hinh_tgia' varchar(100) DEFAULT NULL
+CREATE TABLE `tacgia` (
+  `ma_tgia` int(11) NOT NULL,
+  `ten_tgia` varchar(100) NOT NULL,
+  `hinh_tgia` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng 'tacgia'
+-- Đang đổ dữ liệu cho bảng `tacgia`
 --
 
-INSERT INTO 'tacgia' ('ma_tgia', 'ten_tgia', 'hinh_tgia') VALUES
+INSERT INTO `tacgia` (`ma_tgia`, `ten_tgia`, `hinh_tgia`) VALUES
 (1, 'Nhacvietplus', NULL),
 (2, 'Sưu tầm', NULL),
 (3, 'Sandy', NULL),
@@ -87,19 +87,19 @@ INSERT INTO 'tacgia' ('ma_tgia', 'ten_tgia', 'hinh_tgia') VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng 'theloai'
+-- Cấu trúc bảng cho bảng `theloai`
 --
 
-CREATE TABLE 'theloai' (
-  'ma_tloai' int(11) NOT NULL,
-  'ten_tloai' varchar(50) NOT NULL
+CREATE TABLE `theloai` (
+  `ma_tloai` int(11) NOT NULL,
+  `ten_tloai` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng 'theloai'
+-- Đang đổ dữ liệu cho bảng `theloai`
 --
 
-INSERT INTO 'theloai' ('ma_tloai', 'ten_tloai') VALUES
+INSERT INTO `theloai` (`ma_tloai`, `ten_tloai`) VALUES
 (1, 'Nhạc trẻ'),
 (2, 'Nhạc trữ tình'),
 (3, 'Nhạc cách mạng'),
@@ -114,35 +114,57 @@ INSERT INTO 'theloai' ('ma_tloai', 'ten_tloai') VALUES
 --
 
 --
--- Chỉ mục cho bảng 'baiviet'
+-- Chỉ mục cho bảng `baiviet`
 --
-ALTER TABLE 'baiviet'
-  ADD PRIMARY KEY ('ma_bviet'),
-  ADD KEY 'ma_tgia' ('ma_tgia'),
-  ADD KEY 'ma_tloai' ('ma_tloai');
+ALTER TABLE `baiviet`
+  ADD PRIMARY KEY (`ma_bviet`),
+  ADD KEY `ma_tgia` (`ma_tgia`),
+  ADD KEY `ma_tloai` (`ma_tloai`);
 
 --
--- Chỉ mục cho bảng 'tacgia'
+-- Chỉ mục cho bảng `tacgia`
 --
-ALTER TABLE 'tacgia'
-  ADD PRIMARY KEY ('ma_tgia');
+ALTER TABLE `tacgia`
+  ADD PRIMARY KEY (`ma_tgia`);
 
 --
--- Chỉ mục cho bảng 'theloai'
+-- Chỉ mục cho bảng `theloai`
 --
-ALTER TABLE 'theloai'
-  ADD PRIMARY KEY ('ma_tloai');
+ALTER TABLE `theloai`
+  ADD PRIMARY KEY (`ma_tloai`);
+
+--
+-- AUTO_INCREMENT cho các bảng đã đổ
+--
+
+--
+-- AUTO_INCREMENT cho bảng `baiviet`
+--
+ALTER TABLE `baiviet`
+  MODIFY `ma_bviet` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT cho bảng `tacgia`
+--
+ALTER TABLE `tacgia`
+  MODIFY `ma_tgia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT cho bảng `theloai`
+--
+ALTER TABLE `theloai`
+  MODIFY `ma_tloai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
 --
 
 --
--- Các ràng buộc cho bảng 'baiviet'
+-- Các ràng buộc cho bảng `baiviet`
 --
-ALTER TABLE 'baiviet'
-  ADD CONSTRAINT 'baiviet_ibfk_1' FOREIGN KEY ('ma_tgia') REFERENCES 'tacgia' ('ma_tgia'),
-  ADD CONSTRAINT 'baiviet_ibfk_2' FOREIGN KEY ('ma_tloai') REFERENCES 'theloai' ('ma_tloai');
+ALTER TABLE `baiviet`
+  ADD CONSTRAINT `tacgia` FOREIGN KEY (`ma_tgia`) REFERENCES `tacgia` (`ma_tgia`),
+  ADD CONSTRAINT `theloai` FOREIGN KEY (`ma_tloai`) REFERENCES `theloai` (`ma_tloai`);
 COMMIT;
 
 
@@ -158,11 +180,9 @@ SELECT baiviet.ma_bviet, baiviet.tieude, baiviet.ten_bhat, tacgia.ten_tgia, thel
 SELECT theloai.ma_tloai, theloai.ten_tloai, COUNT(baiviet.ma_bviet) AS so_luong_bai_viet FROM theloai LEFT JOIN baiviet ON theloai.ma_tloai = baiviet.ma_tloai GROUP BY theloai.ma_tloai ORDER BY so_luong_bai_viet DESC LIMIT 1;
 -- f. Liệt kê 2 tác giả có số bài viết nhiều nhất
 SELECT tacgia.ma_tgia, tacgia.ten_tgia, COUNT(baiviet.ma_tgia) as tong_bai_viet FROM baiviet, tacgia WHERE tacgia.ma_tgia = baiviet.ma_tgia GROUP BY baiviet.ma_tgia ORDER BY tong_bai_viet DESC LIMIT 2;
--- g. Liệt kê các bài viết về các bài hát có tựa bài hát chứa 1 trong các từ “yêu”, “thương”, “anh”,
-“em”
+-- g. Liệt kê các bài viết về các bài hát có tựa bài hát chứa 1 trong các từ “yêu”, “thương”, “anh”,“em”
 SELECT * FROM baiviet WHERE ten_bhat LIKE '%yêu%' OR ten_bhat LIKE '%thương%' OR ten_bhat LIKE '%anh%' OR ten_bhat LIKE '%em%';
--- h. Liệt kê các bài viết về các bài hát có tiêu đề bài viết hoặc tựa bài hát chứa 1 trong các từ
-“yêu”, “thương”, “anh”, “em” 
+-- h. Liệt kê các bài viết về các bài hát có tiêu đề bài viết hoặc tựa bài hát chứa 1 trong các từ“yêu”, “thương”, “anh”, “em” 
 SELECT * FROM baiviet WHERE tieude LIKE '%yêu%' OR ten_bhat LIKE '%thương%' OR ten_bhat LIKE '%anh%' OR ten_bhat LIKE '%em%';
 -- i. Tạo 1 view có tên vw_Music để hiển thị thông tin về Danh sách các bài viết kèm theo Tên
 thể loại và tên tác giả
@@ -172,11 +192,11 @@ FROM baiviet
 JOIN tacgia ON tacgia.ma_tgia = baiviet.ma_tgia
 JOIN theloai ON theloai.ma_tloai = baiviet.ma_tloai;
 
-j. Tạo 1 thủ tục có tên sp_DSBaiViet với tham số truyền vào là Tên thể loại và trả về danh sách bài viết của thể loại đó. Nếu thể loại không tồn tại thì hiển thị thông báo lỗi.
-k. Thêm mới cột SLBaiViet vào trong bảng theloai. Tạo 1 trigger có tên tg_CapNhatTheLoai để
-khi thêm/sửa/xóa bài viết thì số lượng bài viết trong bảng theloai được cập nhật theo.
-l. Bổ sung thêm bảng Users để lưu thông tin Tài khoản đăng nhập và sử dụng cho chức năng
-Đăng nhập/Quản trị trang web.
+-- j. Tạo 1 thủ tục có tên sp_DSBaiViet với tham số truyền vào là Tên thể loại và trả về danh sách bài viết của thể loại đó. Nếu thể loại không tồn tại thì hiển thị thông báo lỗi.
+-- k. Thêm mới cột SLBaiViet vào trong bảng theloai. Tạo 1 trigger có tên tg_CapNhatTheLoai để
+-- khi thêm/sửa/xóa bài viết thì số lượng bài viết trong bảng theloai được cập nhật theo.
+-- l. Bổ sung thêm bảng Users để lưu thông tin Tài khoản đăng nhập và sử dụng cho chức năng
+-- Đăng nhập/Quản trị trang web.
 CREATE TABLE Users (
   id INT PRIMARY KEY AUTO_INCREMENT,
   UserName VARCHAR(255) NOT NULL UNIQUE,

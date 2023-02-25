@@ -1,3 +1,10 @@
+<?php
+declare(strict_types = 1);                               // Use strict types
+require '../backEnd/includes/database-connection.php';              // Create PDO object
+require '../backEnd/includes/functions.php';                        // Include functions
+$sql = "SELECT * FROM baiviet";
+$articles = pdo($pdo, $sql)->fetchAll();  
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

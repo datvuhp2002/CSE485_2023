@@ -36,6 +36,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="article.php">Bài viết</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="users.php">Người dùng</a>
+                    </li>
                 </ul>
                 </div>
             </div>

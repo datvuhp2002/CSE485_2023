@@ -2,66 +2,77 @@
     declare(strict_types = 1);                                          // Use strict types
     require '../../backEnd/includes/database-connection.php';              // Create PDO object
     require '../../backEnd/includes/functions.php';                        // Include functions
+    session_start();
+    if (isset($_SESSION['id']) && isset($_SESSION['UserName'])) {
+        ?>
+            <?php include "../includes/headerAdmin.php";?>
+                <main class="container mt-5 mb-5">
+                    <!-- <h3 class="text-center text-uppercase mb-3 text-primary">CẢM NHẬN VỀ BÀI HÁT</h3> -->
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="card mb-2" style="width: 100%;">
+                                <div class="card-body">
+                                    <h5 class="card-title text-center">
+                                        <a href="" class="text-decoration-none">Người dùng</a>
+                                    </h5>
+            
+                                    <h5 class="h1 text-center">
+                                        110
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+            
+                        <div class="col-sm-3">
+                            <div class="card mb-2" style="width: 100%;">
+                                <div class="card-body">
+                                    <h5 class="card-title text-center">
+                                        <a href="" class="text-decoration-none">Thể loại</a>
+                                    </h5>
+            
+                                    <h5 class="h1 text-center">
+                                        10
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+            
+                        <div class="col-sm-3">
+                            <div class="card mb-2" style="width: 100%;">
+                                <div class="card-body">
+                                    <h5 class="card-title text-center">
+                                        <a href="" class="text-decoration-none">Tác giả</a>
+                                    </h5>
+            
+                                    <h5 class="h1 text-center">
+                                        20
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+            
+                        <div class="col-sm-3">
+                            <div class="card mb-2" style="width: 100%;">
+                                <div class="card-body">
+                                    <h5 class="card-title text-center">
+                                        <a href="" class="text-decoration-none">Bài viết</a>
+                                    </h5>
+            
+                                    <h5 class="h1 text-center">
+                                        110
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            <?php include "../includes/footerAdmin.php";?>
+    <?php
+    
+    }
+    else{
+        header("Location: ./fronEnd/login.php");
+        exit();
+    }
 ?>
-<?php include "../includes/headerAdmin.php";?>
-    <main class="container mt-5 mb-5">
-        <!-- <h3 class="text-center text-uppercase mb-3 text-primary">CẢM NHẬN VỀ BÀI HÁT</h3> -->
-        <div class="row">
-            <div class="col-sm-3">
-                <div class="card mb-2" style="width: 100%;">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">
-                            <a href="" class="text-decoration-none">Người dùng</a>
-                        </h5>
 
-                        <h5 class="h1 text-center">
-                            110
-                        </h5>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-3">
-                <div class="card mb-2" style="width: 100%;">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">
-                            <a href="" class="text-decoration-none">Thể loại</a>
-                        </h5>
-
-                        <h5 class="h1 text-center">
-                            10
-                        </h5>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-3">
-                <div class="card mb-2" style="width: 100%;">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">
-                            <a href="" class="text-decoration-none">Tác giả</a>
-                        </h5>
-
-                        <h5 class="h1 text-center">
-                            20
-                        </h5>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-3">
-                <div class="card mb-2" style="width: 100%;">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">
-                            <a href="" class="text-decoration-none">Bài viết</a>
-                        </h5>
-
-                        <h5 class="h1 text-center">
-                            110
-                        </h5>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
-<?php include "../includes/footerAdmin.php";?>

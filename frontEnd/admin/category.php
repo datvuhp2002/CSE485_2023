@@ -47,3 +47,4 @@ require '../../backEnd/includes/functions.php';                        // Includ
         </div>
     </main>
 <?php include "../includes/footerAdmin.php";?>
+

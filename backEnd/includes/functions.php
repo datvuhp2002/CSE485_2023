@@ -53,3 +53,43 @@ function handle_shutdown()
         handle_exception($e);             // Call exception handler
     }
 }
+function func_get_img($item){
+    $filename = "images/songs/" . html_escape($item) . ".jpg";
+    if (file_exists($filename)) {
+        $img_src = $filename;
+    } else{
+        $img_src = $item;
+    }
+    return $img_src;
+}
+function process_data_article($str){
+    switch($str){
+        case 'tieude': 
+            return 'Mã tiêu đề';
+            break;
+        case 'ten_bhat': 
+            return 'Tên bài hát';
+            break;
+        case 'ma_tloai':
+            return 'Mã thể loại';
+            break;
+        case 'tomtat':
+            return 'Tóm tắt';
+            break;
+        case 'noidung':
+            return 'Nội dung';
+            break;
+        case 'ma_tgia':
+            return 'Tác giả';
+            break;
+        case 'ngayviet':
+            return 'Ngày viết';
+            break;
+        case 'hinhanh':
+            return "Hình ảnh";
+            break;
+        default:
+            return 'none';
+            break;
+    }
+};

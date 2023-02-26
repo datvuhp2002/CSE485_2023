@@ -19,7 +19,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 
     }
 
-    $username = validate($_POST['uername']);
+    $username = validate($_POST['username']);
 
     $password = validate($_POST['password']);
 
@@ -84,11 +84,12 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 
     header("Location: index.php");
 
-    exit();
+    // exit();
 
 }
-?>
 
+
+?>
 <?php include "includes/header.php";?>
 <head>
     <link rel="stylesheet" href="css/style_login.css">

@@ -233,6 +233,43 @@ ALTER TABLE `baiviet`
   ADD CONSTRAINT `theloai` FOREIGN KEY (`ma_tloai`) REFERENCES `theloai` (`ma_tloai`);
 COMMIT;
 
+-- a. Liệt kê các bài viết về các bài hát thuộc thể loại Nhạc trữ tình:
+SELECT * from baiviet, theloai WHERE ten_tloai = "Nhạc trữ tình" AND theloai.ma_tloai = baiviet.ma_tloai;
+-- b. Liệt kê các bài viết của tác giả “Nhacvietplus”:
+SELECT * from baiviet, tacgia WHERE ten_tgia = "Nhacvietplus" AND tacgia.ma_tgia = baiviet.ma_tgia;
+-- c. Liệt kê các thể loại nhạc chưa có bài viết cảm nhận nào. 
+SELECT DISTINCT theloai.ten_tloai FROM theloai LEFT JOIN baiviet ON theloai.ma_tloai = baiviet.ma_tloai WHERE baiviet.ma_tloai IS NULL;
+-- d. Liệt kê các bài viết với các thông tin sau: mã bài viết, tên bài viết, tên bài hát, tên tác giả, tên thể loại, ngày viết.
+SELECT baiviet.ma_bviet, baiviet.tieude, baiviet.ten_bhat, tacgia.ten_tgia, theloai.ten_tloai, baiviet.ngayviet FROM baiviet JOIN tacgia ON baiviet.ma_tgia = tacgia.ma_tgia JOIN theloai ON baiviet.ma_tloai = theloai.ma_tloai;
+-- e. Tìm thể loại có số bài viết nhiều nhất
+SELECT theloai.ma_tloai, theloai.ten_tloai, COUNT(baiviet.ma_bviet) AS so_luong_bai_viet FROM theloai LEFT JOIN baiviet ON theloai.ma_tloai = baiviet.ma_tloai GROUP BY theloai.ma_tloai ORDER BY so_luong_bai_viet DESC LIMIT 1;
+-- f. Liệt kê 2 tác giả có số bài viết nhiều nhất
+SELECT tacgia.ma_tgia, tacgia.ten_tgia, COUNT(baiviet.ma_tgia) as tong_bai_viet FROM baiviet, tacgia WHERE tacgia.ma_tgia = baiviet.ma_tgia GROUP BY baiviet.ma_tgia ORDER BY tong_bai_viet DESC LIMIT 2;
+-- g. Liệt kê các bài viết về các bài hát có tựa bài hát chứa 1 trong các từ “yêu”, “thương”, “anh”,
+“em”
+SELECT * FROM baiviet WHERE ten_bhat LIKE '%yêu%' OR ten_bhat LIKE '%thương%' OR ten_bhat LIKE '%anh%' OR ten_bhat LIKE '%em%';
+-- h. Liệt kê các bài viết về các bài hát có tiêu đề bài viết hoặc tựa bài hát chứa 1 trong các từ
+“yêu”, “thương”, “anh”, “em” 
+SELECT * FROM baiviet WHERE tieude LIKE '%yêu%' OR ten_bhat LIKE '%thương%' OR ten_bhat LIKE '%anh%' OR ten_bhat LIKE '%em%';
+-- i. Tạo 1 view có tên vw_Music để hiển thị thông tin về Danh sách các bài viết kèm theo Tên
+thể loại và tên tác giả
+CREATE VIEW vw_Music AS
+SELECT baiviet.ma_bviet AS 'Mã bài viết', baiviet.tieude AS 'Tiêu đề bài viết', baiviet.ten_bhat AS 'Tên bài hát', tacgia.ten_tgia AS 'Tên tác giả', theloai.ten_tloai AS 'Tên thể loại', baiviet.ngayviet AS 'Ngày viết'
+FROM baiviet
+JOIN tacgia ON tacgia.ma_tgia = baiviet.ma_tgia
+JOIN theloai ON theloai.ma_tloai = baiviet.ma_tloai;
+
+-- j. Tạo 1 thủ tục có tên sp_DSBaiViet với tham số truyền vào là Tên thể loại và trả về danh sách bài viết của thể loại đó. Nếu thể loại không tồn tại thì hiển thị thông báo lỗi.
+-- k. Thêm mới cột SLBaiViet vào trong bảng theloai. Tạo 1 trigger có tên tg_CapNhatTheLoai để
+-- khi thêm/sửa/xóa bài viết thì số lượng bài viết trong bảng theloai được cập nhật theo.
+-- l. Bổ sung thêm bảng Users để lưu thông tin Tài khoản đăng nhập và sử dụng cho chức năng
+-- Đăng nhập/Quản trị trang web.
+CREATE TABLE Users (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  UserName VARCHAR(255) NOT NULL UNIQUE,
+  Password VARCHAR(255) NOT NULL,
+  Role ENUM('user', 'admin') NOT NULL DEFAULT 'user'
+);
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

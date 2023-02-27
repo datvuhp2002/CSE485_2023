@@ -93,3 +93,42 @@ function process_data_article($str){
             break;
     }
 };
+// administrator
+function process_data_admin($str){
+    switch($str){
+        case 'baiviet': 
+            return 'Bài viết';
+            break;
+        case 'tacgia': 
+            return 'Tác giả';
+            break;
+        case 'theloai':
+            return 'Thể loại';
+            break;
+        case 'users':
+            return 'Người dùng';
+            break;
+        default:
+            return 'none';
+            break;
+    }
+};
+function process_link_admin($str){
+    switch($str){
+        case 'baiviet': 
+            return 'article.php';
+            break;
+        case 'tacgia': 
+            return 'author.php';
+            break;
+        case 'theloai':
+            return 'category.php';
+            break;
+        case 'users':
+            return 'users.php';
+            break;
+        default:
+            return 'none';
+            break;
+    }
+};

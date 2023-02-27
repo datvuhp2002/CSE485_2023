@@ -2,9 +2,8 @@
     declare(strict_types = 1);                                          // Use strict types
     require '../../backEnd/includes/database-connection.php';              // Create PDO object
     require '../../backEnd/includes/functions.php';                        // Include functions
-    session_start();
-    if (isset($_SESSION['id']) && isset($_SESSION['UserName'])) {
-        ?>
+
+?>
             <?php include "../includes/headerAdmin.php";?>
                 <main class="container mt-5 mb-5">
                     <!-- <h3 class="text-center text-uppercase mb-3 text-primary">CẢM NHẬN VỀ BÀI HÁT</h3> -->
@@ -67,12 +66,5 @@
                     </div>
                 </main>
             <?php include "../includes/footerAdmin.php";?>
-    <?php
-    
-    }
-    else{
-        header("Location: ./fronEnd/login.php");
-        exit();
-    }
-?>
+
 

@@ -2,66 +2,28 @@
     declare(strict_types = 1);                                          // Use strict types
     require '../../backEnd/includes/database-connection.php';              // Create PDO object
     require '../../backEnd/includes/functions.php';                        // Include functions
+    $sql = "SELECT table_name, table_rows FROM information_schema.tables WHERE table_schema = 'btth01_cse485' AND table_name IN ('baiviet', 'tacgia', 'theloai', 'users');";
+    $data = pdo($pdo,$sql)->fetchAll();
 ?>
 <?php include "../includes/headerAdmin.php";?>
     <main class="container mt-5 mb-5">
-        <!-- <h3 class="text-center text-uppercase mb-3 text-primary">CẢM NHẬN VỀ BÀI HÁT</h3> -->
         <div class="row">
-            <div class="col-sm-3">
-                <div class="card mb-2" style="width: 100%;">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">
-                            <a href="" class="text-decoration-none">Người dùng</a>
-                        </h5>
-
-                        <h5 class="h1 text-center">
-                            110
-                        </h5>
+            <?php foreach($data as $value){?>
+                <div class="col-sm-3">
+                    <div class="card mb-2" style="width: 100%;">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">
+                                <a href="<?=process_link_admin($value['table_name']) ?>" class="text-decoration-none">
+                                    <?= process_data_admin($value['table_name']) ?>
+                                </a>
+                            </h5>
+                            <h5 class="h1 text-center">
+                                <?= $value['table_rows']?>
+                            </h5>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="col-sm-3">
-                <div class="card mb-2" style="width: 100%;">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">
-                            <a href="" class="text-decoration-none">Thể loại</a>
-                        </h5>
-
-                        <h5 class="h1 text-center">
-                            10
-                        </h5>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-3">
-                <div class="card mb-2" style="width: 100%;">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">
-                            <a href="" class="text-decoration-none">Tác giả</a>
-                        </h5>
-
-                        <h5 class="h1 text-center">
-                            20
-                        </h5>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-3">
-                <div class="card mb-2" style="width: 100%;">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">
-                            <a href="" class="text-decoration-none">Bài viết</a>
-                        </h5>
-
-                        <h5 class="h1 text-center">
-                            110
-                        </h5>
-                    </div>
-                </div>
-            </div>
+            <?php }?>
         </div>
     </main>
 <?php include "../includes/footerAdmin.php";?>

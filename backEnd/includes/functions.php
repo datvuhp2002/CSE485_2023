@@ -34,25 +34,25 @@ function handle_error($error_type, $error_message, $error_file, $error_line)
 }
 
 // Handle exceptions - log exception and show error message (if server does not send error page listed in .htaccess)
-set_exception_handler('handle_exception');
-function handle_exception($e)
-{
-    error_log($e);                        // Log the error
-    http_response_code(500);              // Set the http response code
-    echo "<h1>Sorry, a problem occurred</h1>   
-          The site's owners have been informed. Please try again later.";
-}
+// set_exception_handler('handle_exception');
+// function handle_exception($e)
+// {
+//     error_log($e);                        // Log the error
+//     http_response_code(500);              // Set the http response code
+//     echo "<h1>Sorry, a problem occurred</h1>   
+//           The site's owners have been informed. Please try again later.";
+// }
 
 // Handle fatal errors
-register_shutdown_function('handle_shutdown');
-function handle_shutdown()
-{
-    $error = error_get_last();            // Check for error in script
-    if ($error !== null) {                // If there was an error next line throws exception
-        $e = new ErrorException($error['message'], 0, $error['type'], $error['file'], $error['line']);
-        handle_exception($e);             // Call exception handler
-    }
-}
+// register_shutdown_function('handle_shutdown');
+// function handle_shutdown()
+// {
+//     $error = error_get_last();            // Check for error in script
+//     if ($error !== null) {                // If there was an error next line throws exception
+//         $e = new ErrorException($error['message'], 0, $error['type'], $error['file'], $error['line']);
+//         handle_exception($e);             // Call exception handler
+//     }
+// }
 function func_get_img($item){
     $filename = "images/songs/" . html_escape($item) . ".jpg";
     if (file_exists($filename)) {
@@ -87,6 +87,45 @@ function process_data_article($str){
             break;
         case 'hinhanh':
             return "Hình ảnh";
+            break;
+        default:
+            return 'none';
+            break;
+    }
+};
+// administrator
+function process_data_admin($str){
+    switch($str){
+        case 'baiviet': 
+            return 'Bài viết';
+            break;
+        case 'tacgia': 
+            return 'Tác giả';
+            break;
+        case 'theloai':
+            return 'Thể loại';
+            break;
+        case 'users':
+            return 'Người dùng';
+            break;
+        default:
+            return 'none';
+            break;
+    }
+};
+function process_link_admin($str){
+    switch($str){
+        case 'baiviet': 
+            return 'article.php';
+            break;
+        case 'tacgia': 
+            return 'author.php';
+            break;
+        case 'theloai':
+            return 'category.php';
+            break;
+        case 'users':
+            return 'users.php';
             break;
         default:
             return 'none';

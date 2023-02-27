@@ -1,9 +1,10 @@
 <?php
-    declare(strict_types = 1);                                          // Use strict types
-    require '../backEnd/includes/database-connection.php';              // Create PDO object
-    require '../backEnd/includes/functions.php';                        // Include functions
-
+declare(strict_types = 1);                                          // Use strict types
+require '../backEnd/includes/database-connection.php';              // Create PDO object
+require '../backEnd/includes/functions.php'; 
 ?>
+
+
 
 <?php include "includes/header.php";?>
 <head>
@@ -23,15 +24,16 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form>
+                        <form action="process_login.php" method="post">
+
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="txtUser"><i class="fas fa-user"></i></span>
-                                <input type="text" class="form-control" placeholder="username" >
+                                <input type="text" class="form-control" placeholder="username" name="username" required>
                             </div>
 
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="txtPass"><i class="fas fa-key"></i></span>
-                                <input type="text" class="form-control" placeholder="password" >
+                                <input type="password" class="form-control" placeholder="password" name="password" required>
                             </div>
                             
                             <div class="row align-items-center remember">

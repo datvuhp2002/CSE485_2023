@@ -3,13 +3,9 @@ declare(strict_types = 1);                                          // Use stric
 require '../backEnd/includes/database-connection.php';              // Create PDO object
 require '../backEnd/includes/functions.php'; 
 ?>
-
-
-
 <?php include "includes/header.php";?>
 <head>
     <link rel="stylesheet" href="css/style_login.css">
-    
 </head>
     <main class="container mt-5 mb-5">
         <!-- <h3 class="text-center text-uppercase mb-3 text-primary">CẢM NHẬN VỀ BÀI HÁT</h3> -->

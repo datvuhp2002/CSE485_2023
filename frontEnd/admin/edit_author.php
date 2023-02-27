@@ -3,7 +3,7 @@
     require '../../backEnd/includes/database-connection.php';              // Create PDO object
     require '../../backEnd/includes/functions.php';                        // Include functions
     $id = $_GET['id'];
-    $sql = "SELECT tacgia.ma_tgia ,tacgia.ten_tgia ,tacgia.hinh_tgia   FROM `tacgia` WHERE ma_tgia = '$id'";
+    $sql = "SELECT tacgia.ten_tgia ,tacgia.hinh_tgia   FROM `tacgia` WHERE ma_tgia = '$id'";
     $author = pdo($pdo,$sql)->fetch();
 ?>
 
@@ -12,14 +12,14 @@
         <div class="row">
             <div class="col-sm">
                 <h3 class="text-center text-uppercase fw-bold">Sửa thông tin tác giả</h3>
-                <form action="process_edit_article.php" method="post">
+                <form action="process_edit_author.php" method="post">
                     <div class="input-group mt-3 mb-3">
                         <span class="input-group-text" id="lblCatId">Mã tác giả</span>
-                        <input type="text" class="form-control" name="txtma_bviet" readonly value='<?= $id?>' >
+                        <input type="text" class="form-control" name="txtma_tgia" readonly value='<?= $id?>' >
                     </div>
                     <?php foreach($author as $key => $value) { ?>
                         <div class="input-group mt-3 mb-3" >
-                            <span class="input-group-text" style="min-width: 105px;"><?= process_data_article($key)?></span>
+                            <span class="input-group-text" style="min-width: 105px;"><?= process_data_author($key)?></span>
                             <input type="text" class="form-control" name="txt<?=$key?>" value='<?= html_escape($value)?>' <?= $key == 'ngayviet' ? 'readonly' : ''?>>
                         </div> 
                     <?php }?>

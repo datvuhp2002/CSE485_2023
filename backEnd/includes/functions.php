@@ -142,3 +142,17 @@ function process_link_admin($str){
             break;
     }
 };
+
+function process_data_author($str){
+    switch($str){
+        case 'ten_tgia':
+            return 'Tên Tác giả';
+            break;
+        case 'hinh_tgia':
+            return "Hình ảnh tác giả";
+            break;
+        default:
+            return 'none';
+            break;
+    }
+};

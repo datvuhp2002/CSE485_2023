@@ -32,7 +32,7 @@
                     </div>
                     <div class="input-group mt-3 mb-3" >
                         <span class="input-group-text" style="min-width: 105px;">Tác giả</span>
-                        <select name="author" id="category">
+                        <select name="author" id="author">
                             <?php foreach($authors as $author) { ?>
                                 <option value="<?= $author['ma_tgia']; ?>"><?=$author['ma_tgia'] . ' - ' .$author['ten_tgia']?></option>
                             <?php }?>

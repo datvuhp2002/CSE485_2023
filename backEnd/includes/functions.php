@@ -80,7 +80,7 @@ function process_data_article($str){
             return 'Nội dung';
             break;
         case 'ma_tgia':
-            return 'Tác giả';
+            return 'Mã tác giả';
             break;
         case 'ngayviet':
             return 'Ngày viết';

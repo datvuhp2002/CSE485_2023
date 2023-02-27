@@ -25,7 +25,7 @@
                                 <th name = "id" scope="row"><?= html_escape($author['ma_tgia'])?></th>
                                 <td ><?= html_escape($author['ten_tgia']) ?></td>
                                 <td>
-                                    <a href=""><i class="fa-solid fa-pen-to-square"></i></a>
+                                    <a href="edit_author.php?id=<?= $author['ma_tgia']?>"><i class="fa-solid fa-pen-to-square"></i></a>
                                 </td>
                                 <td >
                                     <a href=""><i class="fa-solid fa-trash"></i></a>

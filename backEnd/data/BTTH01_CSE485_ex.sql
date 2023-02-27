@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th2 24, 2023 lúc 05:45 PM
--- Phiên bản máy phục vụ: 10.4.24-MariaDB
--- Phiên bản PHP: 8.1.6
+-- Host: 127.0.0.1
+-- Generation Time: Feb 26, 2023 at 01:16 PM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `btth01_cse485`
+-- Database: `btth01_cse485`
 --
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `baiviet`
+-- Table structure for table `baiviet`
 --
 
 CREATE TABLE `baiviet` (
@@ -37,10 +37,10 @@ CREATE TABLE `baiviet` (
   `ma_tgia` int(11) NOT NULL,
   `ngayviet` datetime NOT NULL DEFAULT current_timestamp(),
   `hinhanh` varchar(200) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `baiviet`
+-- Dumping data for table `baiviet`
 --
 
 INSERT INTO `baiviet` (`ma_bviet`, `tieude`, `ten_bhat`, `ma_tloai`, `tomtat`, `noidung`, `ma_tgia`, `ngayviet`, `hinhanh`) VALUES
@@ -61,17 +61,17 @@ INSERT INTO `baiviet` (`ma_bviet`, `tieude`, `ten_bhat`, `ma_tloai`, `tomtat`, `
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `tacgia`
+-- Table structure for table `tacgia`
 --
 
 CREATE TABLE `tacgia` (
   `ma_tgia` int(11) NOT NULL,
   `ten_tgia` varchar(100) NOT NULL,
   `hinh_tgia` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `tacgia`
+-- Dumping data for table `tacgia`
 --
 
 INSERT INTO `tacgia` (`ma_tgia`, `ten_tgia`, `hinh_tgia`) VALUES
@@ -87,16 +87,16 @@ INSERT INTO `tacgia` (`ma_tgia`, `ten_tgia`, `hinh_tgia`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `theloai`
+-- Table structure for table `theloai`
 --
 
 CREATE TABLE `theloai` (
   `ma_tloai` int(11) NOT NULL,
   `ten_tloai` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `theloai`
+-- Dumping data for table `theloai`
 --
 
 INSERT INTO `theloai` (`ma_tloai`, `ten_tloai`) VALUES
@@ -109,12 +109,65 @@ INSERT INTO `theloai` (`ma_tloai`, `ten_tloai`) VALUES
 (7, 'Rock'),
 (8, 'R&B');
 
+-- --------------------------------------------------------
+
 --
--- Chỉ mục cho các bảng đã đổ
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `UserName` varchar(255) NOT NULL,
+  `Password` varchar(255) NOT NULL,
+  `Role` enum('user','admin') NOT NULL DEFAULT 'user'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `UserName`, `Password`, `Role`) VALUES
+(1, 'admin', '123456', 'admin'),
+(2, 'user1', '123456', 'user'),
+(3, 'user2', '123456', 'user'),
+(4, 'user3', '123456', 'user'),
+(5, 'user4', '123456', 'user'),
+(6, 'user5', '123456', 'user'),
+(7, 'user6', '123456', 'user'),
+(8, 'user7', '123456', 'user'),
+(9, 'user8', '123456', 'user'),
+(10, 'user9', '123456', 'user');
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `vw_music`
+-- (See below for the actual view)
+--
+CREATE TABLE `vw_music` (
+`Mã bài viết` int(11)
+,`Tiêu đề bài viết` varchar(200)
+,`Tên bài hát` varchar(100)
+,`Tên tác giả` varchar(100)
+,`Tên thể loại` varchar(50)
+,`Ngày viết` datetime
+);
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `vw_music`
+--
+DROP TABLE IF EXISTS `vw_music`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_music`  AS SELECT `baiviet`.`ma_bviet` AS `Mã bài viết`, `baiviet`.`tieude` AS `Tiêu đề bài viết`, `baiviet`.`ten_bhat` AS `Tên bài hát`, `tacgia`.`ten_tgia` AS `Tên tác giả`, `theloai`.`ten_tloai` AS `Tên thể loại`, `baiviet`.`ngayviet` AS `Ngày viết` FROM ((`baiviet` join `tacgia` on(`tacgia`.`ma_tgia` = `baiviet`.`ma_tgia`)) join `theloai` on(`theloai`.`ma_tloai` = `baiviet`.`ma_tloai`))  ;
+
+--
+-- Indexes for dumped tables
 --
 
 --
--- Chỉ mục cho bảng `baiviet`
+-- Indexes for table `baiviet`
 --
 ALTER TABLE `baiviet`
   ADD PRIMARY KEY (`ma_bviet`),
@@ -122,51 +175,63 @@ ALTER TABLE `baiviet`
   ADD KEY `ma_tloai` (`ma_tloai`);
 
 --
--- Chỉ mục cho bảng `tacgia`
+-- Indexes for table `tacgia`
 --
 ALTER TABLE `tacgia`
   ADD PRIMARY KEY (`ma_tgia`);
 
 --
--- Chỉ mục cho bảng `theloai`
+-- Indexes for table `theloai`
 --
 ALTER TABLE `theloai`
   ADD PRIMARY KEY (`ma_tloai`);
 
 --
--- AUTO_INCREMENT cho các bảng đã đổ
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `UserName` (`UserName`);
+
+--
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT cho bảng `baiviet`
+-- AUTO_INCREMENT for table `baiviet`
 --
 ALTER TABLE `baiviet`
   MODIFY `ma_bviet` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- AUTO_INCREMENT cho bảng `tacgia`
+-- AUTO_INCREMENT for table `tacgia`
 --
 ALTER TABLE `tacgia`
   MODIFY `ma_tgia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT cho bảng `theloai`
+-- AUTO_INCREMENT for table `theloai`
 --
 ALTER TABLE `theloai`
   MODIFY `ma_tloai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- Các ràng buộc cho các bảng đã đổ
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- Constraints for dumped tables
 --
 
 --
--- Các ràng buộc cho bảng `baiviet`
+-- Constraints for table `baiviet`
 --
 ALTER TABLE `baiviet`
   ADD CONSTRAINT `tacgia` FOREIGN KEY (`ma_tgia`) REFERENCES `tacgia` (`ma_tgia`),
   ADD CONSTRAINT `theloai` FOREIGN KEY (`ma_tloai`) REFERENCES `theloai` (`ma_tloai`);
 COMMIT;
-
 
 -- a. Liệt kê các bài viết về các bài hát thuộc thể loại Nhạc trữ tình:
 SELECT * from baiviet, theloai WHERE ten_tloai = "Nhạc trữ tình" AND theloai.ma_tloai = baiviet.ma_tloai;
@@ -180,9 +245,11 @@ SELECT baiviet.ma_bviet, baiviet.tieude, baiviet.ten_bhat, tacgia.ten_tgia, thel
 SELECT theloai.ma_tloai, theloai.ten_tloai, COUNT(baiviet.ma_bviet) AS so_luong_bai_viet FROM theloai LEFT JOIN baiviet ON theloai.ma_tloai = baiviet.ma_tloai GROUP BY theloai.ma_tloai ORDER BY so_luong_bai_viet DESC LIMIT 1;
 -- f. Liệt kê 2 tác giả có số bài viết nhiều nhất
 SELECT tacgia.ma_tgia, tacgia.ten_tgia, COUNT(baiviet.ma_tgia) as tong_bai_viet FROM baiviet, tacgia WHERE tacgia.ma_tgia = baiviet.ma_tgia GROUP BY baiviet.ma_tgia ORDER BY tong_bai_viet DESC LIMIT 2;
--- g. Liệt kê các bài viết về các bài hát có tựa bài hát chứa 1 trong các từ “yêu”, “thương”, “anh”,“em”
+-- g. Liệt kê các bài viết về các bài hát có tựa bài hát chứa 1 trong các từ “yêu”, “thương”, “anh”,
+“em”
 SELECT * FROM baiviet WHERE ten_bhat LIKE '%yêu%' OR ten_bhat LIKE '%thương%' OR ten_bhat LIKE '%anh%' OR ten_bhat LIKE '%em%';
--- h. Liệt kê các bài viết về các bài hát có tiêu đề bài viết hoặc tựa bài hát chứa 1 trong các từ“yêu”, “thương”, “anh”, “em” 
+-- h. Liệt kê các bài viết về các bài hát có tiêu đề bài viết hoặc tựa bài hát chứa 1 trong các từ
+“yêu”, “thương”, “anh”, “em” 
 SELECT * FROM baiviet WHERE tieude LIKE '%yêu%' OR ten_bhat LIKE '%thương%' OR ten_bhat LIKE '%anh%' OR ten_bhat LIKE '%em%';
 -- i. Tạo 1 view có tên vw_Music để hiển thị thông tin về Danh sách các bài viết kèm theo Tên
 thể loại và tên tác giả

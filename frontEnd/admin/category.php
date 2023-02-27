@@ -42,3 +42,4 @@ $articles = pdo($pdo,$sql)->fetchAll();
         </div>
     </main>
 <?php include "../includes/footerAdmin.php";?>
+

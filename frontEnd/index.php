@@ -6,10 +6,15 @@
     $baiviet = pdo($pdo, $sql)->fetchAll(); 
 ?>
 <?php
-
-
 ?>
-<?php include "includes/header.php";?>
+<?php
+    session_start();
+    if(!isset($_SESSION['username'])){
+        include "includes/header.php";
+    }else{
+        include "includes/headerIsLogin.php";
+    }
+?>
 <?php include 'includes/slideShow.php'?>
     <main class="container-fluid mt-3">
         <h3 class="text-center text-uppercase mb-4 text-black">TOP bài hát yêu thích</h3>

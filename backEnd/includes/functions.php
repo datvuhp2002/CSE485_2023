@@ -34,14 +34,14 @@ function handle_error($error_type, $error_message, $error_file, $error_line)
 }
 
 // Handle exceptions - log exception and show error message (if server does not send error page listed in .htaccess)
-set_exception_handler('handle_exception');
-function handle_exception($e)
-{
-    error_log($e);                        // Log the error
-    http_response_code(500);              // Set the http response code
-    echo "<h1>Sorry, a problem occurred</h1>   
-          The site's owners have been informed. Please try again later.";
-}
+// set_exception_handler('handle_exception');
+// function handle_exception($e)
+// {
+//     error_log($e);                        // Log the error
+//     http_response_code(500);              // Set the http response code
+//     echo "<h1>Sorry, a problem occurred</h1>   
+//           The site's owners have been informed. Please try again later.";
+// }
 
 // Handle fatal errors
 register_shutdown_function('handle_shutdown');
@@ -80,13 +80,76 @@ function process_data_article($str){
             return 'Nội dung';
             break;
         case 'ma_tgia':
-            return 'Tác giả';
+            return 'Mã tác giả';
             break;
         case 'ngayviet':
             return 'Ngày viết';
             break;
         case 'hinhanh':
             return "Hình ảnh";
+            break;
+        default:
+            return 'none';
+            break;
+    }
+};
+// administrator
+function validate($data){
+
+    $data = trim($data);
+
+    $data = stripslashes($data);
+
+    $data = htmlspecialchars($data);
+
+    return $data;
+ }
+function process_data_admin($str){
+    switch($str){
+        case 'baiviet': 
+            return 'Bài viết';
+            break;
+        case 'tacgia': 
+            return 'Tác giả';
+            break;
+        case 'theloai':
+            return 'Thể loại';
+            break;
+        case 'users':
+            return 'Người dùng';
+            break;
+        default:
+            return 'none';
+            break;
+    }
+};
+function process_link_admin($str){
+    switch($str){
+        case 'baiviet': 
+            return 'article.php';
+            break;
+        case 'tacgia': 
+            return 'author.php';
+            break;
+        case 'theloai':
+            return 'category.php';
+            break;
+        case 'users':
+            return 'users.php';
+            break;
+        default:
+            return 'none';
+            break;
+    }
+};
+
+function process_data_author($str){
+    switch($str){
+        case 'ten_tgia':
+            return 'Tên Tác giả';
+            break;
+        case 'hinh_tgia':
+            return "Hình ảnh tác giả";
             break;
         default:
             return 'none';

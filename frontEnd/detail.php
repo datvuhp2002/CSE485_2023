@@ -2,6 +2,7 @@
     declare(strict_types = 1);                               // Use strict types
     require '../backEnd/includes/database-connection.php';              // Create PDO object
     require '../backEnd/includes/functions.php';                        // Include functions
+
 ?>
 <?php include "includes/header.php";?>
     <main class="container mt-5">

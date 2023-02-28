@@ -16,7 +16,14 @@
 
 
 ?>
-<?php include "includes/header.php";?>
+<?php
+    session_start();
+    if(!isset($_SESSION['username'])){
+        include "includes/header.php";
+    }else{
+        include "includes/headerIsLogin.php";
+    }
+?>
     <main class="container mt-5">
             <?php
                 if(!$post){ 
@@ -29,15 +36,15 @@
                             </div>
 
                             <div class="col-8">
-                                <h5 class="card-title mt-2 fw-bold" style="font-size: 30px">
-                                    <?= html_escape($post['ten_bhat']) ?>
-                                </h5>
+                                <h1 class="card-title mt-2 fw-bold fs-2">
+                                    <?= html_escape($post['ten_bhat']) ?>  
+                                </h1>
+                                <blockquote class="fs-7 opacity-50" style = "user-select: none;"><span class=" Source Title">Ngày viết: </span><?= html_escape($post['ngayviet']) ?></blockquote> 
                                 <p><span class=" fw-bold">Bài hát: </span><?= html_escape($post['ten_bhat']) ?></p> 
                                 <p><span class=" fw-bold">Tóm tắt: </span><?= html_escape($post['tomtat']) ?></p> 
                                 <p><span class=" fw-bold">Nội dung: </span><?= html_escape($post['noidung']) ?></p> 
                                 <p class="card-text"><span class=" fw-bold">Mã tác giả: </span><?= html_escape($post['ma_tgia']) ?></p> 
-                                <p class="card-text"><span class=" fw-bold">Ngày viết: </span><?= html_escape($post['ngayviet']) ?></p> 
-
+                                
 
                             </div>
 

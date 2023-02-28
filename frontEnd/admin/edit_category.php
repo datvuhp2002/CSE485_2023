@@ -22,19 +22,14 @@
                         <span class="input-group-text" id="lblCatId">Mã thể loại</span>
                         <input type="text" class="form-control" name="txt_ma_tloai" readonly value="<?= $id ?>"  >
                     </div>
-<<<<<<< HEAD
+
                   <?php foreach($article as $key =>$values ) {?>  
-=======
->>>>>>> 8f5c56e9b8a5e80c466e47a587d2b878d27674ff
                     <div class="input-group mt-3 mb-3">
                         <span class="input-group-text" id="lblCatId">Tên thể loại</span>
                         <input type="text" class="form-control" name="txt_<?=$key?>" value = "<?= html_escape($values) ?>"  >
                     </div>
-<<<<<<< HEAD
-
               <?php }?>
-=======
->>>>>>> 8f5c56e9b8a5e80c466e47a587d2b878d27674ff
+
                     <div class="form-group  float-end ">
                         <input type="submit" value="Lưu lại" class="btn btn-success">
                         <a href="category.php" class="btn btn-warning ">Quay lại</a>

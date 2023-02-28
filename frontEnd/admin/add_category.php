@@ -2,6 +2,8 @@
     declare(strict_types = 1);                                          // Use strict types
     require '../../backEnd/includes/database-connection.php';              // Create PDO object
     require '../../backEnd/includes/functions.php';                        // Include functions
+    $sql = "SELECT theloai.ten_tloai FROM theloai WHERE 1";
+    $article = pdo($pdo, $sql);
 ?>
 <?php include "../includes/headerAdmin.php";?>
     <main class="container mt-5 mb-5">
@@ -10,11 +12,12 @@
             <div class="col-sm">
                 <h3 class="text-center text-uppercase fw-bold">Thêm mới thể loại</h3>
                 <form action="process_add_category.php" method="post">
+                   <?php foreach ($article->fetch() as $key => $value) {?> 
                     <div class="input-group mt-3 mb-3">
                         <span class="input-group-text" id="lblCatName">Tên thể loại</span>
-                        <input type="text" class="form-control" name="txtCatName" >
+                        <input type="text" class="form-control" name="txt_<?=$key?>"required >
                     </div>
-
+                    <?php } ?>
                     <div class="form-group  float-end ">
                         <input type="submit" value="Thêm" class="btn btn-success">
                         <a href="category.php" class="btn btn-warning ">Quay lại</a>
@@ -22,6 +25,5 @@
                 </form>
             </div>
         </div>
-    </main>
+    </main> ?>
 <?php include "../includes/footerAdmin.php";?>
-

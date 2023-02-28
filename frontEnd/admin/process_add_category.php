@@ -16,6 +16,6 @@ else
 ?>
 <script>
     setTimeout(function(){
-        window.Location.href='category.php';
+        window.location.href="category.php";
     },1000);
 </script>

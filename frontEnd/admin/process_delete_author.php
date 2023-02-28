@@ -7,5 +7,9 @@
     $sql = "DELETE FROM tacgia WHERE ma_tgia = :id";
     $author = $pdo->prepare($sql);
     $author->execute([$id]);
+
+    $sql="ALTER TABLE `tacgia` AUTO_INCREMENT = 0";
+    $query = $pdo->prepare($sql);
+    $query->execute();
     header('location: author.php');
 ?>

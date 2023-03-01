@@ -31,6 +31,7 @@
         echo "Thêm bài viết thất bại!";
     }
 ?>
+
 <script>
     setTimeout(function(){
     window.location.href = 'article.php';

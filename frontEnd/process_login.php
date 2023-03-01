@@ -17,8 +17,5 @@
     }else{
         header( "refresh:1;url=login.php" );
         echo "Mật khẩu hoặc tài khoản không đúng";
-        // sleep(1);
-        // header('Location: detail.php',true,303);
-        // exit;
     }
 ?>

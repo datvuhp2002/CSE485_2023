@@ -26,11 +26,7 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="./">Trang chủ</a>
                     </li>
-                    <li class="nav-item">
-                    </li>
-                    <li class="nav-item">
-                        
-                    </li>
+                    
                 </ul>
                 
                 <form class="d-flex" role="search">

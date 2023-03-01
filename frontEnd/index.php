@@ -2,15 +2,12 @@
     declare(strict_types = 1);                               // Use strict types
     require '../backEnd/includes/database-connection.php';              // Create PDO object
     require '../backEnd/includes/functions.php';                        // Include functions
-    // $sql = "SELECT * FROM baiviet";
-    // $baiviet = pdo($pdo, $sql)->fetchAll(); 
-
 ?>
 <?php
 ?>
 <?php
     session_start();
-    if(!isset($_SESSION['username'])){
+    if( !isset($_SESSION['username'])){
         include "includes/header.php";
     }else{
         include "includes/headerIsLogin.php";
@@ -23,7 +20,6 @@
             <?php 
                 $sql = "SELECT * FROM baiviet";
                 $result = $pdo->query($sql);
-                // $row = $result->fetch(PDO::FETCH_ASSOC);
                 while($row = $result->fetch(PDO::FETCH_ASSOC)){ 
                     $ma_bviet = $row['ma_bviet'];
                     ?>
@@ -39,7 +35,6 @@
                             </div>
                         </a>
                     <?php 
-                    // $id++;
                 }
             ?>
         </div>

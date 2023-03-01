@@ -3,11 +3,29 @@
     require '../../backEnd/includes/database-connection.php';              // Create PDO object
     require '../../backEnd/includes/functions.php';                        // Include functions
     $sql = "SELECT baiviet.tieude ,baiviet.ten_bhat,baiviet.tomtat,baiviet.noidung, baiviet.hinhanh  FROM `baiviet`";
-    $article = pdo($pdo,$sql)->fetch();
+    $article = pdo($pdo,$sql);
     $sqlTheLoai = "SELECT * FROM `theloai`";
     $sqlTacgia = "SELECT * FROM `tacgia`";
-    $categories  = pdo($pdo,$sqlTheLoai)->fetchAll();
-    $authors = pdo($pdo,$sqlTacgia)->fetchAll();
+    $categories  = pdo($pdo,$sqlTheLoai);
+    $authors = pdo($pdo,$sqlTacgia);
+
+    //=====check data null========
+    if($article->rowCount()==0){
+        $article = array('tieude' => "",'ten_bhat' => "",'tomtat' => "",'noidung' => "",'hinhanh' => "");
+    }
+    else{ $article= pdo($pdo, $sql)->fetch();}
+
+    if($categories->rowCount()==0){
+        $categories = array('ma_tloai ' => "",'ten_tloai' => "");
+    }
+    else{ $categories= pdo($pdo, $sqlTheLoai)->fetchAll();}
+
+    if($authors->rowCount()==0){
+        $authors = array('ma_tgia ' => "",'ten_tgia' => "",'hinh_tgia' => "");
+    }
+    else{ $authors= pdo($pdo, $sqlTacgia)->fetchAll();}
+
+
 ?>
 <?php include "../includes/headerAdmin.php";?>
     <main class="container mt-5 mb-5">

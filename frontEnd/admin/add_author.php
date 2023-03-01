@@ -3,7 +3,11 @@
     require '../../backEnd/includes/database-connection.php';              // Create PDO object
     require '../../backEnd/includes/functions.php';                        // Include functions
     $sql = "SELECT tacgia.ten_tgia ,tacgia.hinh_tgia FROM `tacgia`";
-    $author = pdo($pdo,$sql)->fetch();
+    $author = pdo($pdo,$sql);
+    if($author->rowCount()==0){
+        $author = array('ten_tgia' => "",'hinh_tgia' => "");
+    }
+    else{ $author= pdo($pdo, $sql)->fetch();}
 ?>
 <?php include "../includes/headerAdmin.php";?>
     <main class="container mt-5 mb-5">

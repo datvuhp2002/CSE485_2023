@@ -12,7 +12,7 @@ require '../backEnd/includes/functions.php';
         <div class="d-flex justify-content-center h-100">
                 <div class="card">
                     <div class="card-header">
-                        <h3>Sign In</h3>
+                        <h3>Sign Up</h3>
                         <div class="d-flex justify-content-end social_icon">
                             <span><i class="fab fa-facebook-square"></i></span>
                             <span><i class="fab fa-google-plus-square"></i></span>
@@ -20,27 +20,27 @@ require '../backEnd/includes/functions.php';
                         </div>
                     </div>
                     <div class="card-body">
-                        <form action="process_login.php" method="post">
+                        <form action="process_signup.php" method="post">
 
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="txtUser"><i class="fas fa-user"></i></span>
-                                <input type="text" class="form-control" placeholder="username" name="username" required>
+                                <input type="text" class="form-control" placeholder="username" name="signup_username" required>
                             </div>
 
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="txtPass"><i class="fas fa-key"></i></span>
-                                <input type="password" class="form-control" placeholder="password" name="password" required>
+                                <input type="password" class="form-control" placeholder="password" name="signup_password" required>
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="txtPass"><i class="fas fa-key"></i></span>
+                                <input type="password" class="form-control" placeholder="re password" name="re_password" required>
                             </div>
                             
-                            <div class="form-group" style="margin-top: 40px">
-                                <input type="submit" value="Login" class="btn float-end login_btn">
+                            <div class="form-group">
+                                <input type="submit" value="Sign Up" class="btn float-end login_btn">
                             </div>
                         </form>
-                    </div>
-                    <div class="card-footer">
-                        <div class="d-flex justify-content-center ">
-                            Don't have an account?<a href="./signup.php" class="text-warning text-decoration-none">Sign Up</a>
-                        </div>
                     </div>
                 </div>
 

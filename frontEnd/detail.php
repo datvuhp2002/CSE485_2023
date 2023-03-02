@@ -2,8 +2,6 @@
     declare(strict_types = 1);                               // Use strict types
     require '../backEnd/includes/database-connection.php';              // Create PDO object
     require '../backEnd/includes/functions.php';                        // Include functions
-    // $sql = "SELECT * FROM baiviet";
-    // $baiviet = pdo($pdo, $sql)->fetchAll(); 
     if (isset($_GET['id'])) {
     $id = $_GET['id'];
     $sql = "SELECT * FROM baiviet WHERE ma_bviet = :id";

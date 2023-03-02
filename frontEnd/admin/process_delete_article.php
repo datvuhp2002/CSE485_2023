@@ -7,5 +7,9 @@
     $sql = "DELETE FROM baiviet WHERE ma_bviet = :id";
     $article = $pdo->prepare($sql);
     $article->execute([$id]);
+
+    $sql="ALTER TABLE `baiviet` AUTO_INCREMENT = 0";
+    $query = $pdo->prepare($sql);
+    $query->execute();
     header('location: article.php');
 ?>

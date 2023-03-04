@@ -26,7 +26,7 @@
                             <h4 class="card-title mt-3 mb-3 fw-bold">
                                     <?= html_escape($row['ten_bhat']) ?>
                             </h4>
-                            <p class="card-text"><?= html_escape($row['tomtat']) ?>p> 
+                            <p class="card-text"><?= html_escape($row['tomtat']) ?>/p> 
                         </div>
                     </div>
                 </a>

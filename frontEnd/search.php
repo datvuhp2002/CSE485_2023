@@ -19,6 +19,9 @@
         while($row = $result->fetch(PDO::FETCH_ASSOC)){ 
             $ma_bviet = $row['ma_bviet'];
             ?>
+                <div class="col-sm-4" style="margin:20px">
+
+                </div>
                 <a href="detail.php?id=<?= $row['ma_bviet'] ?>" class="text-decoration-none col-md-3 col-sm-6 text-black">
                     <div class="card card-block">
                         <div class = "p-3">

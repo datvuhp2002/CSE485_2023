@@ -28,10 +28,10 @@
                     <a class="nav-link active" aria-current="page" href="./">Trang chủ</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="../login.php">Đăng nhập</a>
+                    <a class="nav-link" href="./login.php">Đăng nhập</a>
                     </li>
                 </ul>
-                <form class="d-flex" role="search">
+                <form class="d-flex" action = "search.php" method = "get" role="search">
                     <input class="form-control me-2" type="search" name="search" placeholder="Nội dung cần tìm" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Tìm</button>
                 </form>

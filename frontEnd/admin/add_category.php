@@ -29,5 +29,5 @@
                 </form>
             </div>
         </div>
-    </main> ?>
+    </main> 
 <?php include "../includes/footerAdmin.php";?>
